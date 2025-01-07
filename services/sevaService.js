@@ -1,7 +1,7 @@
 const db = require('../config/db'); // Database connection
 
 // Function to generate token for Seva based on selected date and Seva
-const generateSeva = async (selectedSeva, personName, ashramName, dateTime, mobileNumber) => {
+const generateSeva = async (selectedSeva, personName, ashramName, dateTime, mobileNumber,place) => {
   try {
     // Normalize the date (remove leading zeros and convert to standard format)
     const normalizeDate = (date) => {
@@ -27,11 +27,11 @@ const generateSeva = async (selectedSeva, personName, ashramName, dateTime, mobi
 
     // Insert the new record into the database
     const insertQuery = `
-      INSERT INTO sevaData (selectedSeva, personName, tokenNumber, ashramName, dateTime, mobileNumber)
-      VALUES ($1, $2, $3, $4, $5, $6)
+      INSERT INTO sevaData (selectedSeva, personName, tokenNumber, ashramName, dateTime, mobileNumber,place)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
       RETURNING *;
     `;
-    const insertValues = [selectedSeva, personName, tokenNumber, ashramName, normalizedDate, mobileNumber];
+    const insertValues = [selectedSeva, personName, tokenNumber, ashramName, normalizedDate, mobileNumber,place];
     const insertResult = await db.query(insertQuery, insertValues);
 
     return insertResult.rows[0]; // Return the newly inserted record

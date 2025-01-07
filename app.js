@@ -9,6 +9,7 @@ const reprintRoutes = require('./routes/reprintRoutes');
 const countRoutes = require('./routes/countRoutes');
 const smsRoute = require('./routes/smsRoute');
 const reportRouter = require('./routes/reportRouter');
+
 const db = require('./config/db'); // Import the PostgreSQL connection
 
 const app = express();
@@ -25,6 +26,7 @@ app.use('/api/redo', reprintRoutes);
 app.use('/api/count', countRoutes);
 app.use('/api/sms', smsRoute);
 app.use('/api/report', reportRouter);
+
 
 // Start the server
 app.listen(port, () => {

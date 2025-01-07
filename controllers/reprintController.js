@@ -42,6 +42,7 @@ const handleReprint = async (req, res) => {
         personName: tokenData.personname,
         mobileNumber: tokenData.mobilenumber,
         ashramName: tokenData.ashramname,
+        place: tokenData.place,
       },
     });
   } catch (error) {
