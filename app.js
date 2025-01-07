@@ -18,17 +18,6 @@ const port = 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Test database connection
-app.get('/test-db', async (req, res) => {
-  try {
-    const result = await db.query('SELECT NOW()'); // Test query
-    res.status(200).send(`Database connected successfully: ${result.rows[0].now}`);
-  } catch (err) {
-    console.error('Error connecting to the database:', err);
-    res.status(500).send('Failed to connect to the database');
-  }
-});
-
 // Use the routes
 app.use('/api/auth', authRoutes);
 app.use('/api/seva', sevaRoutes);
